@@ -3,12 +3,13 @@
 ### Task Breakdown
 
 - stand up repo
-  - create vite app (ts - react)
-  - write game plan
+  - create vite app (ts - react) ✅
+  - write game plan ✅
 - RnD Game Engine
   - write types
   - "Deckmaster" Class (handles deck operations)
   - "Player" Class (handles hand operations)
+  -
 - Implement Game Logic
   - steps:
     - Deal,
@@ -27,3 +28,8 @@
   - betting (new step, before Deal)
   - backend (move logic to backend to prevent cheating)
   - multiplayer (socket io?)
+
+### Resources Used
+
+- https://bicyclecards.com/how-to-play/blackjack/
+- https://intranet.missouriwestern.edu/cas/wp-content/uploads/sites/17/2020/05/Standard-Deck-of-Cards.pdf
