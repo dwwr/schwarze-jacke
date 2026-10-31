@@ -4,8 +4,9 @@
 
 - stand up repo
   - create vite app (ts - react)
-  - write types
+  - write game plan
 - RnD Game Engine
+  - write types
   - "Deckmaster" Class (handles deck operations)
   - "Player" Class (handles hand operations)
 - Implement Game Logic
