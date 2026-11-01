@@ -52,3 +52,14 @@ export const evaluateHand = (player: Player): HandEvaluation => {
   }
   return "valid";
 };
+
+export const cpuPlayer = (
+  deckmaster: Deckmaster,
+  player: Player,
+  setDeck: React.Dispatch<React.SetStateAction<Deck>>,
+  setPlayerHand: React.Dispatch<React.SetStateAction<Card[]>>,
+) => {
+  while (player.value < 17) {
+    hit(deckmaster, player, setDeck, setPlayerHand);
+  }
+};
