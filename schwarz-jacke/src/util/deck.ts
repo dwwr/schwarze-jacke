@@ -1,4 +1,4 @@
-import type { Card, Deck, Face, Suit } from "./types";
+import type { Card, Deck, Face, Suit } from "../types";
 
 const suits: Suit[] = ["hearts", "diamonds", "spades", "clubs"];
 const faces: Face[] = ["ace", "jack", "king", "queen"];
@@ -38,15 +38,15 @@ export const createDeck = (): Deck => {
     })
     .flat();
 
-  const getShuffledDeck = (arr: Deck) => {
-    const newArr = arr.slice();
-    for (let i = newArr.length - 1; i > 0; i--) {
-      const rand = Math.floor(Math.random() * (i + 1));
-      [newArr[i], newArr[rand]] = [newArr[rand], newArr[i]];
-    }
-    return newArr;
-  };
-
   const shuffled: Deck = getShuffledDeck(cards);
   return shuffled;
+};
+
+const getShuffledDeck = (arr: Deck) => {
+  const newArr = arr.slice();
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const rand = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[rand]] = [newArr[rand], newArr[i]];
+  }
+  return newArr;
 };

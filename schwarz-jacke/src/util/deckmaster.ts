@@ -1,5 +1,5 @@
 import { createDeck } from "./deck";
-import type { Card, Deck } from "./types";
+import type { Card, Deck } from "../types";
 
 export class Deckmaster {
   deck: Deck;
@@ -10,15 +10,18 @@ export class Deckmaster {
     this.discardPile = [];
   }
 
-  deal(): Card | undefined {
-    if (this.deck.length) {
-      return this.deck.shift();
-    }
+  deal(): Card {
+    return this.deck.shift() as Card;
   }
 
   clear(cards: Card[]) {
     cards.forEach((c) => {
       this.discardPile.push(c);
     });
+  }
+
+  reset() {
+    this.deck = createDeck();
+    this.discardPile = [];
   }
 }
