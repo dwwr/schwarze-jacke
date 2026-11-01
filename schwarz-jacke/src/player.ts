@@ -10,4 +10,13 @@ export class Player {
     this.value = 0;
     this.hasAce = false;
   }
+
+  getCard(card: Card) {
+    this.hand.push(card);
+    this.value = this.sumHand();
+  }
+
+  sumHand() {
+    return this.hand.reduce((a, c) => a + c.value, 0);
+  }
 }

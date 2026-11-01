@@ -10,8 +10,10 @@ export class Deckmaster {
     this.discardPile = [];
   }
 
-  deal() {
-    return this.deck.pop();
+  deal(): Card | undefined {
+    if (this.deck.length) {
+      return this.deck.pop();
+    }
   }
 
   clear(cards: Card[]) {
