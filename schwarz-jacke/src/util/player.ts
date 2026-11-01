@@ -16,7 +16,15 @@ export class Player {
     this.value = this.sumHand();
   }
 
-  sumHand() {
-    return this.hand.reduce((a, c) => a + c.value, 0);
+  sumHand(): number {
+    let sum = this.hand.reduce((a, c) => a + c.value, 0);
+    let aceCount = this.hand.filter((card) => card.isAce).length;
+
+    while (sum > 21 && aceCount > 0) {
+      sum -= 10;
+      aceCount--;
+    }
+
+    return sum;
   }
 }

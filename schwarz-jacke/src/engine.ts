@@ -1,6 +1,6 @@
 import { Deckmaster } from "./util/deckmaster";
 import { Player } from "./util/player";
-import type { Card, Deck } from "./types";
+import type { Card, Deck, HandEvaluation } from "./types";
 
 export const setup = (
   deckmaster: Deckmaster,
@@ -30,4 +30,25 @@ export const setup = (
   setDeck([...deckmaster.deck]);
   setPlayerHand([...player.hand]);
   setDealerHand([...dealer.hand]);
+};
+
+export const hit = (
+  deckmaster: Deckmaster,
+  player: Player,
+  setDeck: React.Dispatch<React.SetStateAction<Deck>>,
+  setPlayerHand: React.Dispatch<React.SetStateAction<Card[]>>,
+) => {
+  player.getCard(deckmaster.deal());
+  setDeck([...deckmaster.deck]);
+  setPlayerHand([...player.hand]);
+};
+
+export const evaluateHand = (player: Player): HandEvaluation => {
+  if (player.value === 21) {
+    return "blackjack";
+  }
+  if (player.value > 21) {
+    return "invalid";
+  }
+  return "valid";
 };

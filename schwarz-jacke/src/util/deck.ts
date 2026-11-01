@@ -17,7 +17,7 @@ export const createSuitCards = (suit: Suit): Card[] => {
       return {
         suit,
         face: b,
-        value: 1,
+        value: 11,
         isAce: true,
       };
     }

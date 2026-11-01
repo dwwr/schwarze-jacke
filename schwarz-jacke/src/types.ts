@@ -14,3 +14,5 @@ export interface Hand {
   cards: Array<Card>;
   value: number;
 }
+
+export type HandEvaluation = "valid" | "invalid" | "blackjack";
