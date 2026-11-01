@@ -12,7 +12,7 @@ export class Deckmaster {
 
   deal(): Card | undefined {
     if (this.deck.length) {
-      return this.deck.pop();
+      return this.deck.shift();
     }
   }
 
