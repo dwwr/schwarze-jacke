@@ -16,3 +16,5 @@ export interface Hand {
 }
 
 export type HandEvaluation = "valid" | "invalid" | "blackjack";
+
+export type GameOutcome = "Player Winner" | "Dealer Winner" | "Tie";

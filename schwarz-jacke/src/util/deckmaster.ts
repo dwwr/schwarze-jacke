@@ -14,7 +14,7 @@ export class Deckmaster {
     return this.deck.shift() as Card;
   }
 
-  clear(cards: Card[]) {
+  discard(cards: Card[]) {
     cards.forEach((c) => {
       this.discardPile.push(c);
     });

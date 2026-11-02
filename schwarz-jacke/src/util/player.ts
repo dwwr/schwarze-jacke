@@ -1,14 +1,14 @@
-import type { Card } from "../types";
+import type { Card, HandEvaluation } from "../types";
 
 export class Player {
   hand: Card[];
   value: number;
-  hasAce?: boolean;
+  handEvaluation: HandEvaluation;
 
   constructor() {
     this.hand = [];
     this.value = 0;
-    this.hasAce = false;
+    this.handEvaluation = "valid";
   }
 
   getCard(card: Card) {
@@ -26,5 +26,11 @@ export class Player {
     }
 
     return sum;
+  }
+
+  reset() {
+    this.hand = [];
+    this.value = 0;
+    this.handEvaluation = "valid";
   }
 }
