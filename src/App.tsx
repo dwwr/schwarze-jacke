@@ -24,6 +24,7 @@ function App() {
   const [isDealerTurn, setIsDealerTurn] = React.useState<boolean>(false);
 
   const playerStatus = evaluateHand(player);
+  evaluateHand(dealer);
 
   React.useEffect(() => {
     if (
