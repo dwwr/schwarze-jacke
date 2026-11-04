@@ -1,4 +1,4 @@
-import { createDeck } from "./deck";
+import { createDeck, getShuffledDeck } from "./deck";
 import type { Card, Deck } from "../types";
 
 export class Deckmaster {
@@ -22,6 +22,11 @@ export class Deckmaster {
 
   reset() {
     this.deck = createDeck();
+    this.discardPile = [];
+  }
+
+  reshuffle() {
+    this.deck = getShuffledDeck([...this.deck, ...this.discardPile]);
     this.discardPile = [];
   }
 }

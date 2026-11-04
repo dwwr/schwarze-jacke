@@ -1,5 +1,12 @@
 # Schwarze-Jacke
 
+This is the game of blackjack. Next JS react app, allows user to start game and progress to end state, then reset and play again. It uses a 52 card deck that reshuffles once there aren't enough cards to deal a full hand to each player.
+
+To play:
+
+- `npm i && npm dev`
+- navigate to `http://localhost:5173/`
+
 ### Task Breakdown
 
 - stand up repo
@@ -13,15 +20,16 @@
 - Implement Game Logic
   - steps:
     - Deal ✅
-    - Player turn - may bust (early resolve)
-    - Dealer turn - may bust (early resolve)
-    - Resolve
+    - Player turn - may bust (early resolve) ✅
+    - Dealer turn - may bust (early resolve) ✅
+    - Resolve ✅
 - UI
-  - render the numbers and buttons to actuate the game via ui
-  - build UI components:
+  - render the numbers and buttons to actuate the game via ui ✅
+  - stub componentry ✅
+- Stretch Goals / Next Ups
+  - break out UI components and style them better:
     - Table/Board
     - Card (face up/down), Deck, Hand
-- Stretch Goals / Next Ups
   - animate UI - anime.js
   - double down (double bet, get one more card, must stand)
   - splitting (1 hand -> 2 hands)
