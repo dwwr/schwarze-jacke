@@ -21,7 +21,6 @@ function App() {
   const [playerHand, setPlayerHand] = React.useState<Card[]>([...player.hand]);
   const [dealerHand, setDealerHand] = React.useState<Card[]>([...player.hand]);
   const [gameOver, setGameOver] = React.useState<boolean>(false);
-  const [isDealerTurn, setIsDealerTurn] = React.useState<boolean>(false);
 
   const playerStatus = evaluateHand(player);
   evaluateHand(dealer);
@@ -34,7 +33,6 @@ function App() {
       if (playerStatus === "invalid") {
         setGameOver(true);
       } else {
-        setIsDealerTurn(true);
         cpuPlayer(deckmaster, dealer, setDeck, setDealerHand);
         setGameOver(true);
       }
@@ -53,7 +51,6 @@ function App() {
               className="button"
               value="DEAL"
               onClick={() => {
-                setIsDealerTurn(false);
                 setGameOver(false);
                 setup(
                   deckmaster,
@@ -123,7 +120,6 @@ function App() {
                       setPlayerHand,
                       setDealerHand,
                     );
-                    setIsDealerTurn(false);
                     setGameOver(false);
                   }}
                 />
@@ -144,7 +140,6 @@ function App() {
                   className="button"
                   value="STAY"
                   onClick={() => {
-                    setIsDealerTurn(true);
                     cpuPlayer(deckmaster, dealer, setDeck, setDealerHand);
                     setGameOver(true);
                   }}
