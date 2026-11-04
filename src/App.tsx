@@ -45,112 +45,113 @@ function App() {
 
   return (
     <>
-      {gameOver && outcome && (
+      <div>
         <div>
-          <h2>{outcome}</h2>
-          <div>
-            You {player.value} · Dealer {dealer.value}
-          </div>
           <input
             type="button"
             className="button"
-            value="DEAL AGAIN"
+            value="DEAL"
             onClick={() => {
-              resetBoard(
+              setIsDealerTurn(false);
+              setGameOver(false);
+              setup(
                 deckmaster,
                 player,
                 dealer,
+                setDeck,
                 setPlayerHand,
                 setDealerHand,
               );
-              setIsDealerTurn(false);
-              setGameOver(false);
             }}
           />
         </div>
-      )}
-
-      {!gameOver && (
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            <input
-              type="button"
-              className="button"
-              value="DEAL"
-              onClick={() => {
-                setIsDealerTurn(false);
-                setGameOver(false);
-                setup(
-                  deckmaster,
-                  player,
-                  dealer,
-                  setDeck,
-                  setPlayerHand,
-                  setDealerHand,
-                );
-              }}
-            />
+            DECK {deck.length}
+            {deck.length && (
+              <div className="deck">
+                <div className="deck deckBase" />
+                <div className="deck deckOverlap" />
+                <div className="deck deckOverlap" />
+              </div>
+            )}
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>
-              DECK {deck.length}
-              {deck.length && (
-                <div className="deck">
-                  <div className="deck deckBase" />
-                  <div className="deck deckOverlap" />
-                  <div className="deck deckOverlap" />
+          <div>
+            DEALER HAND
+            {dealerHand.map((card, index) => {
+              const hidden = !gameOver && index > 0;
+              return (
+                <div
+                  className={hidden ? "card cardBack" : "card cardFront"}
+                  key={index}
+                >
+                  {!hidden && (
+                    <>
+                      <span>{card.face || card.value}</span>
+                      <span>{card.suit}</span>
+                    </>
+                  )}
                 </div>
-              )}
-            </div>
-            <div>
-              PLAYER HAND
-              {playerHand.map((card, index) => (
-                <div className="card cardFront" key={index}>
-                  <span>{card.face || card.value}</span>
-                  <span>{card.suit}</span>
+              );
+            })}
+          </div>
+          <div>
+            PLAYER HAND
+            {playerHand.map((card, index) => (
+              <div className="card cardFront" key={index}>
+                <span>{card.face || card.value}</span>
+                <span>{card.suit}</span>
+              </div>
+            ))}
+            {gameOver && outcome && (
+              <div>
+                <h2>{outcome}</h2>
+                <div>
+                  You {player.value} · Dealer {dealer.value}
                 </div>
-              ))}
-              <input
-                type="button"
-                className="button"
-                value="HIT"
-                onClick={() => {
-                  hit(deckmaster, player, setDeck, setPlayerHand);
-                }}
-              />
-              <input
-                type="button"
-                className="button"
-                value="STAY"
-                onClick={() => {
-                  setIsDealerTurn(true);
-                  cpuPlayer(deckmaster, dealer, setDeck, setDealerHand);
-                  setGameOver(true);
-                }}
-              />
-            </div>
-            <div>
-              DEALER HAND
-              {dealerHand.map((card, index) => {
-                const hidden = !isDealerTurn && index > 0;
-                return (
-                  <div
-                    className={hidden ? "card cardBack" : "card cardFront"}
-                    key={index}
-                  >
-                    {!hidden && (
-                      <>
-                        <span>{card.face || card.value}</span>
-                        <span>{card.suit}</span>
-                      </>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                <input
+                  type="button"
+                  className="button"
+                  value="DEAL AGAIN"
+                  onClick={() => {
+                    resetBoard(
+                      deckmaster,
+                      player,
+                      dealer,
+                      setPlayerHand,
+                      setDealerHand,
+                    );
+                    setIsDealerTurn(false);
+                    setGameOver(false);
+                  }}
+                />
+              </div>
+            )}
+            {!gameOver && (
+              <>
+                <input
+                  type="button"
+                  className="button"
+                  value="HIT"
+                  onClick={() => {
+                    hit(deckmaster, player, setDeck, setPlayerHand);
+                  }}
+                />
+                <input
+                  type="button"
+                  className="button"
+                  value="STAY"
+                  onClick={() => {
+                    setIsDealerTurn(true);
+                    cpuPlayer(deckmaster, dealer, setDeck, setDealerHand);
+                    setGameOver(true);
+                  }}
+                />
+              </>
+            )}
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
