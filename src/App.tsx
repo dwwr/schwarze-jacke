@@ -119,6 +119,7 @@ function App() {
                       dealer,
                       setPlayerHand,
                       setDealerHand,
+                      setDeck,
                     );
                     setGameOver(false);
                   }}

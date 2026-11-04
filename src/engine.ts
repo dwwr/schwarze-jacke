@@ -94,11 +94,17 @@ export const resetBoard = (
   dealer: Player,
   setPlayerHand: React.Dispatch<React.SetStateAction<Card[]>>,
   setDealerHand: React.Dispatch<React.SetStateAction<Card[]>>,
+  setDeck: React.Dispatch<React.SetStateAction<Deck>>,
 ) => {
   const toDiscard = [...player.hand, ...dealer.hand];
   player.reset();
   dealer.reset();
   deckmaster.discard(toDiscard);
+
+  if (deckmaster.deck.length < 4) {
+    deckmaster.reshuffle();
+  }
+  setDeck([...deckmaster.deck]);
   setPlayerHand([]);
   setDealerHand([]);
 };
