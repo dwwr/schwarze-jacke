@@ -46,25 +46,27 @@ function App() {
   return (
     <>
       <div>
-        <div>
-          <input
-            type="button"
-            className="button"
-            value="DEAL"
-            onClick={() => {
-              setIsDealerTurn(false);
-              setGameOver(false);
-              setup(
-                deckmaster,
-                player,
-                dealer,
-                setDeck,
-                setPlayerHand,
-                setDealerHand,
-              );
-            }}
-          />
-        </div>
+        {playerHand.length === 0 && (
+          <div>
+            <input
+              type="button"
+              className="button"
+              value="DEAL"
+              onClick={() => {
+                setIsDealerTurn(false);
+                setGameOver(false);
+                setup(
+                  deckmaster,
+                  player,
+                  dealer,
+                  setDeck,
+                  setPlayerHand,
+                  setDealerHand,
+                );
+              }}
+            />
+          </div>
+        )}
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             DECK {deck.length}
@@ -112,7 +114,7 @@ function App() {
                 <input
                   type="button"
                   className="button"
-                  value="DEAL AGAIN"
+                  value="RESET BOARD"
                   onClick={() => {
                     resetBoard(
                       deckmaster,
