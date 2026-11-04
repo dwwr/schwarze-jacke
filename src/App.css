@@ -57,6 +57,7 @@ h2 {
   height: 200px;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 }
 .cardFront {
   background-color: white;
